@@ -3,7 +3,7 @@ import {ImageModel} from "../../database/allModels"
 import AWS from"aws-sdk";
 import multer from "multer"
 
-import {s3Upload} from "../../Utils/AWS_Utilities/s3"
+import s3Upload from "../../Utils/AWS_Utilities/s3"
 
 const Router = express.Router();
 
@@ -12,11 +12,7 @@ const storage = multer.memoryStorage();
 const upload = multer({storage});
 
 //AWS s3 bucket config
-const s3bucket = new AWS.S3({
-    accessKeyId: "AKIATS3WV6GSJS2G7V3X",
-    secretAccessKey: "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",
-    region: "ap-south-1"
-})
+
 
 
 /* 
@@ -40,6 +36,7 @@ Router.post("/",upload.single("file"), async (req, res)=>{
         }
 
         const uploadImage = await s3Upload(bucketOptions);
+        return res.json({uploadImage});
 
     } catch (error) {
         return res.status(500).json({error: error.message})

@@ -21,6 +21,12 @@ const ReviewSchema = mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: "Images",
     },
+    isRestautantReview:{
+        Boolean,
+    },
+    isFoodReview:{
+        Boolean,
+    },
     rating:
     {
         type: Number,
@@ -31,12 +37,6 @@ const ReviewSchema = mongoose.Schema({
         type: String,
         required: false,
     },
-    isRestautantReview:{
-        Boolean,
-    },
-    isFoodReview:{
-        Boolean,
-    }
 })
 
 export const ReviewModel = mongoose.model("Reviews", ReviewSchema);

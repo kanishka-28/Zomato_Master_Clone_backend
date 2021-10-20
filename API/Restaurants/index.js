@@ -3,6 +3,15 @@ import express from "express";
 
 const Router = express.Router();
 
+
+/* 
+Route     /
+descrip   get all restaurant details
+params    none
+access    public
+method    get
+*/
+
 Router.get("/", async(req, res)=>{
     try {
         const {city} = req.query;
